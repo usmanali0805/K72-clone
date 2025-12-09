@@ -36,15 +36,17 @@ const Agence = () => {
     gsap.to(ImageDivRef.current, {
       scrollTrigger: {
         trigger: ImageDivRef.current,
-        markers: true,
         start: "top 33.54%",
         end: "bottom -70%",
+        pinSpacing:true,
+        pinReparent:true,
+        pinType:"transform",
+        anticipatePin:1,
         scrub: true,
         pin: true,
         onUpdate: (elem) => {
           const ImageIndex = Math.round(elem.progress * (Teammates.length - 1));
           ImageRef.current.src = Teammates[ImageIndex];
-          console.log(ImageRef.current.src)
         },
       },
     });
@@ -52,7 +54,7 @@ const Agence = () => {
 
   return (
     <div>
-      <div className="section1">
+      <div className="section1 pt-1">
         <div
           ref={ImageDivRef}
           className="absolute w-[15vw] h-[30vh] overflow-hidden rounded-3xl top-72 left-[30vw] "
